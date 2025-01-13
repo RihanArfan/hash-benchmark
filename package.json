@@ -1,0 +1,7 @@
+{
+	"dependencies": {
+		"blake3-wasm": "2.1.5",
+		"mitata": "^1.0.27",
+		"unstorage": "^1.14.4"
+	}
+}
