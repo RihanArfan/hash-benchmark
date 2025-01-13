@@ -1,6 +1,7 @@
 import { createHash } from 'crypto';
 import { hash as blake3hash } from 'blake3-wasm'
-import { run, bench, barplot, summary, do_not_optimize } from 'mitata';
+import { murmurHash as ohashMurmur, sha256 as ohashSha256, sha256base64 as ohashSha256Base64 } from "ohash";
+import { run, bench, barplot, summary } from 'mitata';
 import { createStorage } from 'unstorage';
 import fsDriver from 'unstorage/drivers/fs'
 
@@ -33,6 +34,9 @@ const hashMethods = {
   blake2b512: (data) => createHash('blake2b512').update(data).digest('hex'),
   blake2s256: (data) => createHash('blake2s256').update(data).digest('hex'),
   blake3: (data) => blake3hash(data).toString('hex'),
+  ohashMurmur: (data) => ohashMurmur(data),
+  ohashSha256: (data) => ohashSha256(data),
+  ohashSha256Base64: (data) => ohashSha256Base64(data),
 }
 
 barplot(() => {
