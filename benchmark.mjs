@@ -4,7 +4,7 @@ import { run, bench, barplot, summary, do_not_optimize } from 'mitata';
 import { createStorage } from 'unstorage';
 import fsDriver from 'unstorage/drivers/fs'
 
-// run with node --expose-gc disk-benchmark.mjs
+// run with node --expose-gc benchmark.mjs
 
 // Test data
 const srcStorage = createStorage({
@@ -38,7 +38,6 @@ const hashMethods = {
 barplot(() => {
   summary(() => {
     Object.entries(hashMethods).forEach(([name, fn]) => {
-      // bench(`${name}`, () => do_not_optimize(async () => {
       bench(`${name}`, function* (state) {
         yield async () => {
           for (const fileKey of filesToDeploy) {

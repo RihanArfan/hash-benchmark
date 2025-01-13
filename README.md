@@ -5,7 +5,8 @@ Benchmarking different hashing algorithms.
 Uses [mitata](https://github.com/evanwashere/mitata) for benchmarking.
 
 ```
-$ clk: ~3.78 GHz
+$ node --expose-gc benchmark.mjs
+clk: ~3.78 GHz
 cpu: AMD Ryzen 7 5800X 8-Core Processor
 runtime: node 22.12.0 (x64-linux)
 
